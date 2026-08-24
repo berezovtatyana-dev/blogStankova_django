@@ -10,7 +10,7 @@ class Post(models.Model):
         verbose_name='Содержание',
         help_text='Введите текст поста'
     )
-    create_at = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True, #Фиксирует 1 раз при добавлении
         verbose_name='Дата создания'
     )
@@ -25,3 +25,5 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+        ordering = ['-created_at'] #сортировка по дате поста
