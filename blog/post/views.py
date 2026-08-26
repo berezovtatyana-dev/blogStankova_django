@@ -31,9 +31,14 @@ def post_detail(request, post_id):
             comment.save()
             messages.success(request, 'Комментарий добавлен')
             return redirect('post:post_detail', post_id=post.id)
-
+        else:
+            messages.error(request, 'Ошибка при добавлении комментария')
+    else:
+        form = CommentForm()
     context = {
         'post': post,
+        'comments': comments,
+        'form': form,
         'page_title': post.title
     }
     return render(request, 'post/post_details.html', context)
