@@ -38,7 +38,7 @@
     </article>
     <section>
         <h2>Комментарии ({{ comments.count }})</h2>
-            {% if user.is_authentificated %}
+            {% if user.is_authenticated %}
                 <h3>Добавить комментарий</h3>
                 <form method="post">
                     {% csrf_token %}
