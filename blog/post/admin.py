@@ -24,6 +24,6 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('text', 'author__username', 'post__title')
 
     def text_preview(self, obj):
-        return obj.text[:50] + '...' if len(obj.text)<50 else obj.TextField
+        return obj.text[:50] + '...' if len(obj.text)>50 else obj.TextField
 
     text_preview.short_description = 'Текст комментария'
