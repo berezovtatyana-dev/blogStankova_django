@@ -62,7 +62,7 @@ class Comment(models.Model):
     )
 
     def __str__(self):
-        return f'Комментарий от {self.author} к "{self.posts.title}"'
+        return f'Комментарий от {self.author} к "{self.post.title}"'
 
     class Meta:
         verbose_name = 'Комментарий'
