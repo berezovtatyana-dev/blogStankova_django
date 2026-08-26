@@ -70,7 +70,7 @@ def edit_post(request, post_id):
     if request.method == 'POST':
         # instance отвечает за передачу значений свойств объекта
         form = PostCreateForm(request.POST, instance=post)
-f       if form.is_valid():
+        if form.is_valid():
             form.save()
             messages.success(request, 'Пост обновлен')
             return redirect('post:post_detail', post_id=post.id)
@@ -100,7 +100,7 @@ def delete_post(request, post_id):
     context = {
         'post': post,
         'comments': comments,
-        'form'form,
+        'form': form,
         'delete_confirm': True, #Флаг для отображения кнопки
         'page_title': f'Удаление {post.title}',
     }
