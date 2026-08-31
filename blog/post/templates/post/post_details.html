@@ -30,7 +30,7 @@
                 <p>Вы действительно хотите удалить пост?</p>
                 <form method="post" action="{% url 'post:delete_post' post.id %}">
                     {% csrf_token %}
-                    <button type="submit">Да, удалить</button>
+                    <button type="submit" name="confirm_delete">Да, удалить</button>
                     <a href="{% url 'post:post_detail' post.id %}">Отмена</a>
                 </form>
             </div>
