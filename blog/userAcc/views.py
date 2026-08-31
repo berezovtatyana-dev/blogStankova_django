@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import login
 from .forms import RegisterForm
 
 
@@ -7,13 +9,13 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            messages.success(request, 'Акквунт создан')
+            messages.success(request, 'Аккаунт создан')
             return redirect('login')
         else: messages.error(request, 'Ошибки в форме')
     else:
         form = RegisterForm()
     context = {
         'form': form,
-        'page_title': 'Регистрацтя'
+        'page_title': 'Регистрация'
     }
     return render(request, 'userAcc/register.html', context)
