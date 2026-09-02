@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('post.urls')),
     path('register/', include('userAcc.urls')),
-    path('profile/', include('userProfile.urls')),
+    path('profile/', include('userProfile.urls',  namespace='userProfile')),
     # as_view используется для представлений-классов
     path('login/', auth_views.LoginView.as_view(
         template_name='registration/login.html'), name='login'),
