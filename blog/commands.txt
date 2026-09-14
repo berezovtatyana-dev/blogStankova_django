@@ -1,0 +1,192 @@
+django-admin startproject blog
+cd blog
+python manage.py startapp post 
+python manage.py startapp userAcc
+python manage.py startapp userProfile 
+
+
+git init
+pip freeze > requirements.txt
+git add .
+git commit -m "chore: Initial project"
+git branch -M main
+git remote add origin <урл репо>
+git push -u origin main 
+
+
+git checkout -b develop
+git push origin develop
+
+git checkout -b feature/blog-basic
+
+git add .
+git commit -m "feat: add Post model"
+
+python manage.py makemigrations
+git add .
+git commit -m "feat: create migrations Post model"
+
+
+python manage.py migrate 
+python manage.py createsuperuser 
+python manage.py runserver
+http://127.0.0.1:8000/admin 
+ctrl C
+
+git add .
+git commit -m "feat: register Post in admin panel"
+
+git add .
+git commit -m "feat: add post_list and post_details views"
+
+git add .
+git commit -m "feat: configure urls for post app"
+
+python manage.py runserver
+
+git add .
+git commit -m "feat: add templates for post(base,list, detail)"
+
+git push -u origin feature/blog-basic
+
+
+
+
+git checkout -b feature/auth-comments
+git add .
+git commit -m "feat: add auth field to Post model and create Comment model"
+git push -u origin feature/auth-comments
+
+
+python manage.py makemigrations
+
+git add .
+git commit -m "feat: create migrations for author and comments"
+
+
+
+git add .
+git commit -m "feat: add author and Comment model in admin panel"
+
+git add .
+git commit -m "feat: add PostCreate form and Comment form"
+
+git add .
+git commit -m "feat: add post_detail view with comment form"
+
+
+git add .
+git commit -m "feat: create, edit, delete post views"
+git add .
+git commit -m "feat: add create, edit, delete post urls"
+
+git add .
+git commit -m "feat: add login/logout urls and settings"
+
+git add .
+git commit -m "feat: add login, create/edit post templates"
+git push origin feature/auth-comments
+python manage.py migrate
+python manage.py runserver
+
+
+git add .
+git commit -m "fix: logout and delete views"
+git push origin feature/auth-comments
+(на гитхаб создаем pr и мерджим ветку в develop)
+git checkout develop
+git pull origin develop
+git checkout -b feature/registration
+
+git add .
+git commit -m "feat: add register form"
+
+
+git add userAcc/views.py 
+git commit -m "feat: add register view with messages"
+
+git add userAcc/urls.py blog/urls.py 
+git commit -m "feat: configure registration urls"
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+git add .
+git commit -m "feat: add template for registeration"
+git push origin feature/registration
+(на гитхаб создаем pr и мерджим ветку в develop)
+git checkout develop
+git pull origin develop
+git checkout -b feature/profiles 
+
+git add .
+git commit -m "feat: add Profile model with OneToOneField to User"
+
+
+git add .
+git commit -m "feat: add signals for create and save profile"
+git push origin feature/profiles
+
+pip install pillow
+python manage.py makemigrations
+python manage.py migrate
+git add .
+git commit -m "feat: create migrations for Profile model"
+
+git add .
+git commit -m "feat: register Profile and CustomUserAdmin"
+git add .
+git commit -m "feat: add profile editing forms"
+
+git add .
+git commit -m "feat: add profile and profile edit views"
+
+
+git add .
+git commit -m "feat: add profile urls"
+git add .
+git commit -m "feat: add BlockCheckMiddleware"
+git add .
+git commit -m "feat: add profile templates"
+git add .
+git commit -m "feat: add configurations for profile"
+git add .
+git commit -m "feat: add profile link in base template"
+
+git add .
+git commit -m "fix: userAcc profile"
+git push origin feature/profiles
+(создать pr feature/profiles в develop)
+git checkout develop
+git pull origin develop 
+
+git checkout -b feature/modaration
+
+
+git add .
+git commit -m "feat: add moderator checking"
+
+git add .
+git commit -m "feat:  add edit and delete permissions in view"
+
+git add .
+git commit -m "feat: add delete comment url"
+
+git add .
+git commit -m "feat: add template for delete comment"
+
+git add .
+git commit -m "feat: add views for block user"
+
+git add .
+git commit -m "feat: add urls for block user"
+
+git add .
+git commit -m "feat: add templates for blocking user"
+
+python manage.py runserver
+
+git add .
+git commit -m "fix: fix bags"
+git push origin feature/modaration
