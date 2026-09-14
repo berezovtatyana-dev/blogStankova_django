@@ -27,8 +27,6 @@ class Post(models.Model):
         verbose_name='Автор',
         # user.posts.all()
         related_name='posts',
-        null=True, # автор может быть пустым
-        blank=True #Может быть пустым
     )
 
     def __str__(self):
