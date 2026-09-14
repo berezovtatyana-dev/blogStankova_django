@@ -12,7 +12,17 @@
                     </a>
                 </h2>
                 <div>
-                    {{ post.author.username }}
+                    {% if user.is_authenticated and user.profile.is_moderator %}
+                        {% if post.author.id %}
+                            <a href="{% url 'userProfile:user_profile_view' post.author.id %}">
+                                {{ post.author.username}}
+                            </a>
+                        {% else %}
+                            {{ post.author.username }} (нет id)
+                        {% endif %}
+                    {% else %}
+                        {{ post.author.username }}
+                    {% endif %}
                     {{ post.created_at|date:"d.m.Y H:i" }}
                 </div>
                 <div>
